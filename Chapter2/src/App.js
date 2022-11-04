@@ -2,6 +2,7 @@ import React from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
 import MyComponent from "./components/MyComponent";
+import "./App.css";
 
 class App extends React.Component {
   render() {
