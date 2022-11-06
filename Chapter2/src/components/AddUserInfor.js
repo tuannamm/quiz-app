@@ -31,6 +31,11 @@ class UserInfor extends React.Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
+    this.props.handleAddNewUser({
+      id: Math.floor(Math.random() * 100 + 1),
+      name: this.state.name,
+      age: this.state.age,
+    });
   };
 
   render() {
@@ -45,7 +50,6 @@ class UserInfor extends React.Component {
             type="text"
             onChange={(event) => this.handleOnChangeInput(event)}
           />
-          <button>Submit</button>
         </form>
         <form onSubmit={(event) => this.handleOnSubmit(event)}>
           <label>Your age: </label>
