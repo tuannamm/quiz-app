@@ -22,8 +22,8 @@ class DisplayInfor extends React.Component {
           }}
         >
           {this.state.isShowListUsers === true
-            ? "Show list users"
-            : "Hide list users"}
+            ? "Hide list users"
+            : "Show list users"}
         </div>
 
         {this.state.isShowListUsers && (
