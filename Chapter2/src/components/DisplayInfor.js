@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfor.scss";
 
 // stateless and stateful
@@ -87,8 +87,19 @@ const DisplayInfor = (props) => {
   const handleShowHideListUsers = () => {
     setShowHideListUsers(!isShowListUsers);
   };
+
+  console.log("test 1");
+
+  useEffect(() => {
+    setTimeout(() => {
+      document.title = "Tuan Nam";
+    }, 3000);
+    console.log("list users has been changed");
+  }, [listUsers]);
+
   return (
     <div className="display-infor-container">
+      {console.log("test 3")}
       <div>
         <span onClick={() => handleShowHideListUsers()}>
           {isShowListUsers ? "Hide list users" : "Show list users"}

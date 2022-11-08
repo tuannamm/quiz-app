@@ -20,8 +20,6 @@ const MyComponent = (props) => {
 
   //jsx
 
-  console.log("listUsers1: ", listUsers);
-
   return (
     <>
       <UserInfor handleAddNewUser={handleAddNewUser} />
