@@ -1,68 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 
-class UserInfor extends React.Component {
-  state = {
+const UserInfor = ({ handleAddNewUser }) => {
+  const [infor, setInfor] = useState({
     name: "Tuan Nam",
     address: "Sai Gon",
     age: 21,
-  };
+  });
 
-  handleClick = (event) => {
-    console.log("Hello World");
-    console.log("My name is " + this.state.name);
-
-    this.setState({
+  const handleClick = (event) => {
+    setInfor({
       name: "Tun Nom",
       age: Math.floor(Math.random() * 100 + 1),
     });
   };
 
-  handleOnChangeInput = (event) => {
-    this.setState({
+  const handleOnChangeInput = (event) => {
+    setInfor({
       name: event.target.value,
     });
   };
 
-  handleOnChangeAge = (event) => {
-    this.setState({
+  const handleOnChangeAge = (event) => {
+    setInfor({
       age: event.target.value,
     });
   };
 
-  handleOnSubmit = (event) => {
+  const handleOnSubmit = (event) => {
     event.preventDefault();
-    this.props.handleAddNewUser({
+    handleAddNewUser({
       id: Math.floor(Math.random() * 100 + 1),
-      name: this.state.name,
-      age: this.state.age,
+      name: infor.name,
+      age: infor.age,
     });
   };
 
-  render() {
-    return (
-      <>
-        My name is {this.state.name} and I'm {this.state.age}
-        <button onClick={this.handleClick}>Click me</button>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
-          <label>Your name: </label>
-          <input
-            value={this.state.name}
-            type="text"
-            onChange={(event) => this.handleOnChangeInput(event)}
-          />
-        </form>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
-          <label>Your age: </label>
-          <input
-            value={this.state.age}
-            type="text"
-            onChange={(event) => this.handleOnChangeAge(event)}
-          />
-          <button>Submit</button>
-        </form>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      My name is {infor.name} and I'm {infor.age}
+      <button onClick={() => handleClick()}>Click me</button>
+      <form onSubmit={(event) => handleOnSubmit(event)}>
+        <label>Your name: </label>
+        <input
+          value={infor.name}
+          type="text"
+          onChange={(event) => handleOnChangeInput(event)}
+        />
+      </form>
+      <form onSubmit={(event) => handleOnSubmit(event)}>
+        <label>Your age: </label>
+        <input
+          value={infor.age}
+          type="text"
+          onChange={(event) => handleOnChangeAge(event)}
+        />
+        <button>Submit</button>
+      </form>
+    </>
+  );
+};
 
 export default UserInfor;
