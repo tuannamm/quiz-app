@@ -10,10 +10,10 @@ const App = () => {
         test link
         <div>
           <button>
-            <Link to="/user">go to user page</Link>
+            <Link to="/users">go to user page</Link>
           </button>
           <button>
-            <Link to="/admin">go to admin page</Link>
+            <Link to="/admins">go to admin page</Link>
           </button>
         </div>
       </div>
