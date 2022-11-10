@@ -9,7 +9,7 @@ const Header = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         <NavLink className="navbar navbar-brand" to="/">
-          Tún Nômmm
+          TunsNoommmm
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
