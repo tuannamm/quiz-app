@@ -1,9 +1,11 @@
 import "./App.scss";
 
+import Header from "./components/Header/Header";
+
 function App() {
   return (
     <div className="App">
-      <button className="btn btn-primary">Click me</button>
+      <Header />
     </div>
   );
 }
