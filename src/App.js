@@ -1,5 +1,7 @@
+// import library
 import "./App.scss";
 
+// import component
 import Header from "./components/Header/Header";
 
 function App() {
