@@ -6,13 +6,83 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 1350px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1300px;
+  }
+}
 
 .app-container {
   .header-container {
-    .nav-link {
-      &.active  {
-        color:rgb(94, 92, 92)
+    .btn-login {
+      border-radius: 5px;
+      border: 1px solid grey;
+      margin: 0 10px;
+      padding: 0 15px;
+      height: 40px;
+    }
+    .btn-signup {
+      border-radius: 5px;
+      border: 1px solid grey;
+      margin: 0 15px;
+      padding: 0 15px;
+      color: white;
+      background-color: #303030;
+      &:hover {
+        background-color: black;
+      }
+      height: 40px;
+
+    }
+    .navbar {
+      z-index: 10;
+      background-color: rgba(0,0,0,0) !important;
+      .navbar-brand {
+        font-size: 30px;
+        color: black;
+        font-weight: 500;
+      }
+      .nav-link {
+        &.active  {
+          color:rgb(94, 92, 92)
+        }
+      }
+    }
+    
+  }
+  .homepage-container {
+    .homepage-content {
+      padding: 100px ;
+      width: 50%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .title1 {
+        font-size: 60px;
+        font-weight: 450;
+      }
+      .title2 {
+        font-size: 30px;
+      }
+      .title3 {
+        button {
+          margin-top: 20px;
+          border-radius: 10px;
+          border: 1px solid black;
+          width: 50%;
+          height: 50px;
+          font-size: 20px ;
+          color: white;
+          background-color: #303030;
+        }
       }
     }
   }
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
 }
