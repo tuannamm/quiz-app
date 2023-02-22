@@ -9,10 +9,21 @@ body {
 
 .app-container {
   .header-container {
-    .nav-link {
-      &.active  {
-        color:rgb(94, 92, 92)
+    .navbar-nav {
+      z-index: 10;
+      opacity: 0.7;
+      .nav-link {
+        &.active  {
+          color:rgb(94, 92, 92)
+        }
       }
     }
+    
   }
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
 }
