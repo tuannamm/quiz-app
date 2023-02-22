@@ -15,7 +15,9 @@ import {
   FaGithub,
   FaRegLaughWink,
   FaHeart,
+  FaReact,
 } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 import sidebarBg from "../../assets/bgSidebar.jpg";
 
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
@@ -41,7 +43,11 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
               whiteSpace: "nowrap",
             }}
           >
-            Quiz App
+            {<FaReact size={"3em"} color={"00bfff"} />}
+
+            <span style={{ marginLeft: "20px", fontSize: "20px" }}>
+              Quiz App
+            </span>
           </div>
         </SidebarHeader>
 
@@ -49,43 +55,16 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
           <Menu iconShape="circle">
             <MenuItem
               icon={<FaTachometerAlt />}
-              suffix={<span className="badge red">NEW</span>}
+              suffix={<span className="badge red">Main</span>}
             >
               Dashboard
             </MenuItem>
-            <MenuItem icon={<FaGem />}> component</MenuItem>
           </Menu>
           <Menu iconShape="circle">
-            <SubMenu
-              suffix={<span className="badge yellow">3</span>}
-              title="xxx"
-              icon={<FaRegLaughWink />}
-            >
-              <MenuItem>1</MenuItem>
-              <MenuItem>2</MenuItem>
-              <MenuItem>3</MenuItem>
-            </SubMenu>
-            <SubMenu
-              prefix={<span className="badge gray">3</span>}
-              title="xxx"
-              icon={<FaHeart />}
-            >
-              <MenuItem> 1</MenuItem>
-              <MenuItem> 2</MenuItem>
-              <MenuItem> 3</MenuItem>
-            </SubMenu>
-            <SubMenu title="xxx" icon={<FaList />}>
-              <MenuItem> 1 </MenuItem>
-              <MenuItem> 2 </MenuItem>
-              <SubMenu title="Xxx">
-                <MenuItem>3.1</MenuItem>
-                <MenuItem>3.2 </MenuItem>
-                <SubMenu title="xxx">
-                  <MenuItem>3.3.1</MenuItem>
-                  <MenuItem>3.3.2</MenuItem>
-                  <MenuItem>3.3.3</MenuItem>
-                </SubMenu>
-              </SubMenu>
+            <SubMenu title="Feature" icon={<FaRegLaughWink />}>
+              <MenuItem>Quản lý Users</MenuItem>
+              <MenuItem>Quản lý Quiz</MenuItem>
+              <MenuItem>Quản lý Câu hỏi</MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>
@@ -98,7 +77,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
             }}
           >
             <a
-              href="https://github.com/azouaoui-med/react-pro-sidebar"
+              href="https://github.com/tuannamm/quiz-app"
               target="_blank"
               className="sidebar-btn"
               rel="noopener noreferrer"
@@ -111,7 +90,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                   overflow: "hidden",
                 }}
               >
-                View Source
+                Tún Nôm Udemy
               </span>
             </a>
           </div>
