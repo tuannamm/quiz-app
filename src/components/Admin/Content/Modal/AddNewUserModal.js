@@ -3,8 +3,9 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "../ManageUser.scss";
 
-import axios from "axios";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { postCreateNewUser } from "../../../../services/apiService";
 
 const AddNewUserModal = () => {
   const [show, setShow] = useState(true);
@@ -51,24 +52,14 @@ const AddNewUserModal = () => {
       toast.error("Invalid password");
     }
 
-    // submit data to database
-    const data = new FormData();
-    data.append("email", email);
-    data.append("password", password);
-    data.append("username", username);
-    data.append("role", role);
-    data.append("userImage", image);
+    let data = await postCreateNewUser(email, password, username, role, image);
 
-    let res = await axios.post(
-      "http://localhost:8081/api/v1/participant",
-      data
-    );
-    if (res.data && res.data.EC === 0) {
-      toast.success(res.data.EM);
+    if (data && data.EC === 0) {
+      toast.success(data.EM);
       handleClose();
     }
-    if (res.data && res.data.EC !== 0) {
-      toast.error(res.data.EM);
+    if (data && data.EC !== 0) {
+      toast.error(data.EM);
     }
   };
 
@@ -118,7 +109,7 @@ const AddNewUserModal = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-6">
               <label className="form-label">Role</label>
               <select
                 className="form-select"
