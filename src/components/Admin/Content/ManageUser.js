@@ -1,16 +1,19 @@
+import { useState } from "react";
 import AddNewUserModal from "./Modal/AddNewUserModal";
 import "./ManageUser.scss";
 
 const ManageUser = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="manage-user-container">
       <div className="manage-title">Manage User</div>
       <div className="user-content">
-        <div>
-          <button>Add new users</button>
+        <div className="btn-add-new" onClick={() => setShowModal(!showModal)}>
+          <button className="btn-add">Add new users</button>
         </div>
         <div>table users</div>
-        <AddNewUserModal />
+        {showModal && <AddNewUserModal />}
       </div>
     </div>
   );
