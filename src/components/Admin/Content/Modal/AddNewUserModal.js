@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import "../ManageUser.scss";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddNewUserModal = () => {
   const [show, setShow] = useState(true);
@@ -32,17 +33,25 @@ const AddNewUserModal = () => {
     }
   };
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const handleSubmitUser = async () => {
     // validate
+    const isValidEmail = validateEmail();
+    if (isValidEmail) {
+      toast.error("Invalid email");
+    }
+    if (!password) {
+      toast.error("Invalid password");
+    }
 
-    // call api
-    // let data = {
-    //   email,
-    //   password,
-    //   username,
-    //   role,
-    //   userImage: image,
-    // };
+    // submit data to database
     const data = new FormData();
     data.append("email", email);
     data.append("password", password);
@@ -54,6 +63,13 @@ const AddNewUserModal = () => {
       "http://localhost:8081/api/v1/participant",
       data
     );
+    if (res.data && res.data.EC === 0) {
+      toast.success(res.data.EM);
+      handleClose();
+    }
+    if (res.data && res.data.EC !== 0) {
+      toast.error(res.data.EM);
+    }
   };
 
   return (
