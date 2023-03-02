@@ -14,8 +14,9 @@ import {
   FaRegLaughWink,
   FaReact,
 } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
+
 import sidebarBg from "../../assets/bgSidebar.jpg";
+import { Link } from "react-router-dom";
 
 const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
   return (
@@ -59,8 +60,11 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
           </Menu>
           <Menu iconShape="circle">
             <SubMenu title="Feature" icon={<FaRegLaughWink />}>
-              <MenuItem>Quản lý Users</MenuItem>
-              <MenuItem>Quản lý Quiz</MenuItem>
+              <MenuItem>
+                Quản lý Users
+                <Link to="manage-user" />
+              </MenuItem>
+              <MenuItem>Quản lý Bài Quiz</MenuItem>
               <MenuItem>Quản lý Câu hỏi</MenuItem>
             </SubMenu>
           </Menu>
