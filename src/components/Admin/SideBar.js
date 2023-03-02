@@ -10,11 +10,8 @@ import {
 } from "react-pro-sidebar";
 import {
   FaTachometerAlt,
-  FaGem,
-  FaList,
   FaGithub,
   FaRegLaughWink,
-  FaHeart,
   FaReact,
 } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
@@ -90,7 +87,7 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                   overflow: "hidden",
                 }}
               >
-                Tún Nôm Udemy
+                Tún Nôm Github
               </span>
             </a>
           </div>
