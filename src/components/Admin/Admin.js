@@ -3,6 +3,7 @@ import SideBar from "./SideBar";
 import "./Admin.scss";
 
 import { FaBars } from "react-icons/fa";
+import { FiUpload } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
 
 const Admin = () => {
