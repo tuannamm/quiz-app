@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postCreateNewUser } from "../../../../services/apiService";
 
-const AddNewUserModal = () => {
+const AddNewUserModal = ({ getListUser }) => {
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
@@ -57,6 +57,7 @@ const AddNewUserModal = () => {
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
+      // await getListUser();
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
