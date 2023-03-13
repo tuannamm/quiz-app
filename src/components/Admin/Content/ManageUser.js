@@ -1,6 +1,8 @@
 import { useState } from "react";
-import AddNewUserModal from "./Modal/AddNewUserModal";
 import "./ManageUser.scss";
+
+import TableUsers from "./tableUsers";
+import AddNewUserModal from "./Modal/AddNewUserModal";
 
 const ManageUser = () => {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +14,7 @@ const ManageUser = () => {
         <div className="btn-add-new" onClick={() => setShowModal(!showModal)}>
           <button className="btn-add">Add new users</button>
         </div>
-        <div>table users</div>
+        <div>{<TableUsers />}</div>
         {showModal && <AddNewUserModal />}
       </div>
     </div>
