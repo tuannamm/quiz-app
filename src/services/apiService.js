@@ -18,6 +18,11 @@ const getAllUsers = () => {
   return instance.get("api/v1/participant/all");
 };
 
+// get user paginate
+const getListUserPaginate = (page, limit) => {
+  return instance.get(`api/v1/participant?page=${page}&limit=${limit}`);
+};
+
 // update users
 const putUpdateUser = (id, username, role, image) => {
   const data = new FormData();
@@ -29,8 +34,15 @@ const putUpdateUser = (id, username, role, image) => {
   return instance.put(`api/v1/participant`, data);
 };
 
+// delete user
 const deleteUser = (userId) => {
   return instance.delete("api/v1/participant", { data: { id: userId } });
 };
 
-export { postCreateNewUser, getAllUsers, putUpdateUser, deleteUser };
+export {
+  postCreateNewUser,
+  getAllUsers,
+  getListUserPaginate,
+  putUpdateUser,
+  deleteUser,
+};
