@@ -1,5 +1,6 @@
 import instance from "../utils/axiosCustomize";
 
+// post users
 const postCreateNewUser = (email, password, username, role, image) => {
   // submit data to database
   const data = new FormData();
@@ -12,8 +13,20 @@ const postCreateNewUser = (email, password, username, role, image) => {
   return instance.post(`api/v1/participant`, data);
 };
 
+// get all users
 const getAllUsers = () => {
   return instance.get("api/v1/participant/all");
 };
 
-export { postCreateNewUser, getAllUsers };
+// update users
+const putUpdateUser = (id, username, role, image) => {
+  const data = new FormData();
+  data.append("id", id);
+  data.append("username", username);
+  data.append("role", role);
+  data.append("userImage", image);
+
+  return instance.put(`api/v1/participant`, data);
+};
+
+export { postCreateNewUser, getAllUsers, putUpdateUser };
