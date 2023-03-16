@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import "./ManageUser.scss";
 
-import { getAllUsers } from "../../../services/apiService";
+import { getAllUsers, getListUserPaginate } from "../../../services/apiService";
 
-import TableUsers from "./tableUsers";
 import AddNewUserModal from "./Modal/AddNewUserModal";
 import ModalUpdateUser from "./Modal/modalUpdateUser";
 import ModalViewUser from "./Modal/modalViewUser";
 import ModalDeleteUser from "./Modal/modalDeleteUser";
+import TableUsersPaginate from "./tableUsersPaginate";
 
 const ManageUser = () => {
+  const LIMIT_USER_QUANTITY = 10;
   const [showModal, setShowModal] = useState(false);
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
   const [showModalViewUser, setShowModalViewUser] = useState(false);
   const [showModalDeleteUser, setShowModalDeleteUser] = useState(false);
   const [dataUser, setDataUser] = useState();
   const [userList, setUserList] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
 
   const getListUser = async () => {
     let res = await getAllUsers();
@@ -24,8 +26,17 @@ const ManageUser = () => {
     }
   };
 
+  const getListUserWithPaginate = async (page) => {
+    let res = await getListUserPaginate(page, LIMIT_USER_QUANTITY);
+    if (res.EC === 0) {
+      setUserList(res.DT.users);
+      setPageCount(res.DT.totalPages);
+    }
+  };
+
   useEffect(() => {
-    getListUser();
+    // getListUser();
+    getListUserWithPaginate(1);
   }, []);
 
   const handleClickBtnUpdate = (user) => {
@@ -52,8 +63,16 @@ const ManageUser = () => {
         </div>
         <div>
           {
-            <TableUsers
+            // <TableUsers
+            //   userList={userList}
+            //   handleClickBtnUpdate={handleClickBtnUpdate}
+            //   handleClickBtnView={handleClickBtnView}
+            //   handleClickBtnDelete={handleClickBtnDelete}
+            // />
+            <TableUsersPaginate
               userList={userList}
+              getListUserWithPaginate={getListUserWithPaginate}
+              pageCount={pageCount}
               handleClickBtnUpdate={handleClickBtnUpdate}
               handleClickBtnView={handleClickBtnView}
               handleClickBtnDelete={handleClickBtnDelete}
