@@ -14,7 +14,7 @@ const ManageUser = () => {
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
   const [showModalViewUser, setShowModalViewUser] = useState(false);
   const [showModalDeleteUser, setShowModalDeleteUser] = useState(false);
-  const [dataUpdate, setDataUpdate] = useState();
+  const [dataUser, setDataUser] = useState();
   const [userList, setUserList] = useState([]);
 
   const getListUser = async () => {
@@ -29,17 +29,17 @@ const ManageUser = () => {
   }, [userList]);
 
   const handleClickBtnUpdate = (user) => {
-    setDataUpdate(user);
+    setDataUser(user);
     setShowModalUpdateUser(true);
   };
 
   const handleClickBtnView = (user) => {
-    setDataUpdate(user);
+    setDataUser(user);
     setShowModalViewUser(true);
   };
 
   const handleClickBtnDelete = (user) => {
-    setDataUpdate(user);
+    setDataUser(user);
     setShowModalDeleteUser(true);
   };
 
@@ -65,7 +65,7 @@ const ManageUser = () => {
           <ModalUpdateUser
             showModalUpdateUser={showModalUpdateUser}
             setShowModalUpdateUser={setShowModalUpdateUser}
-            dataUpdate={dataUpdate}
+            dataUser={dataUser}
             getListUser={getListUser}
           />
         )}
@@ -73,14 +73,14 @@ const ManageUser = () => {
           <ModalViewUser
             showModalViewUser={showModalViewUser}
             setShowModalViewUser={setShowModalViewUser}
-            dataUpdate={dataUpdate}
+            dataUser={dataUser}
           />
         )}
         {showModalDeleteUser && (
           <ModalDeleteUser
             showModalDeleteUser={showModalDeleteUser}
             setShowModalDeleteUser={setShowModalDeleteUser}
-            dataUpdate={dataUpdate}
+            dataUser={dataUser}
           />
         )}
       </div>

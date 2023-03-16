@@ -7,7 +7,7 @@ import "../ManageUser.scss";
 const ModalViewUser = ({
   showModalViewUser,
   setShowModalViewUser,
-  dataUpdate,
+  dataUser,
   getListUser,
 }) => {
   const [email, setEmail] = useState("");
@@ -22,14 +22,14 @@ const ModalViewUser = ({
   };
 
   useEffect(() => {
-    if (!_.isEmpty(dataUpdate)) {
-      setEmail(dataUpdate.email);
-      setUsername(dataUpdate.username);
-      setRole(dataUpdate.role);
+    if (!_.isEmpty(dataUser)) {
+      setEmail(dataUser.email);
+      setUsername(dataUser.username);
+      setRole(dataUser.role);
       setImage("");
-      setPreviewImg(`data:image/jpeg;base64,${dataUpdate.image}`);
+      setPreviewImg(`data:image/jpeg;base64,${dataUser.image}`);
     }
-  }, [dataUpdate]);
+  }, [dataUser]);
 
   const handleUploadImage = (e) => {
     if (e.target && e.target.files && e.target.files[0]) {
@@ -49,7 +49,7 @@ const ModalViewUser = ({
         backdrop="static"
       >
         <Modal.Header closeButton>
-          <Modal.Title>USER: {dataUpdate.username}</Modal.Title>
+          <Modal.Title>USER: {dataUser.username}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
