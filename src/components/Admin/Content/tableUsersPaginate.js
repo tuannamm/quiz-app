@@ -7,8 +7,11 @@ const TableUsersPaginate = ({
   handleClickBtnDelete,
   getListUserWithPaginate,
   pageCount,
+  currentPage,
+  setCurrentPage,
 }) => {
   const handlePageClick = async (event) => {
+    setCurrentPage(+event.selected + 1);
     await getListUserWithPaginate(+event.selected + 1);
   };
 
@@ -80,6 +83,7 @@ const TableUsersPaginate = ({
           containerClassName="pagination"
           activeClassName="active"
           renderOnZeroPageCount={null}
+          forcePage={currentPage - 1}
         />
       </div>
     </>

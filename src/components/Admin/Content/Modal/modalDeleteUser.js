@@ -10,6 +10,9 @@ const ModalDeleteUser = ({
   setShowModalDeleteUser,
   dataUser,
   getListUser,
+  getListUserWithPaginate,
+  currentPage,
+  setCurrentPage,
 }) => {
   const handleClose = () => {
     setShowModalDeleteUser(false);
@@ -21,7 +24,9 @@ const ModalDeleteUser = ({
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      await getListUser();
+      // await getListUser();
+      setCurrentPage(1);
+      await getListUserWithPaginate(1);
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);

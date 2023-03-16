@@ -18,6 +18,7 @@ const ManageUser = () => {
   const [dataUser, setDataUser] = useState();
   const [userList, setUserList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getListUser = async () => {
     let res = await getAllUsers();
@@ -76,6 +77,8 @@ const ManageUser = () => {
               handleClickBtnUpdate={handleClickBtnUpdate}
               handleClickBtnView={handleClickBtnView}
               handleClickBtnDelete={handleClickBtnDelete}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
             />
           }
         </div>
@@ -86,6 +89,9 @@ const ManageUser = () => {
             setShowModalUpdateUser={setShowModalUpdateUser}
             dataUser={dataUser}
             getListUser={getListUser}
+            getListUserWithPaginate={getListUserWithPaginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         )}
         {showModalViewUser && (
@@ -94,6 +100,7 @@ const ManageUser = () => {
             setShowModalViewUser={setShowModalViewUser}
             dataUser={dataUser}
             getListUser={getListUser}
+            getListUserWithPaginate={getListUserWithPaginate}
           />
         )}
         {showModalDeleteUser && (
@@ -102,6 +109,9 @@ const ManageUser = () => {
             setShowModalDeleteUser={setShowModalDeleteUser}
             dataUser={dataUser}
             getListUser={getListUser}
+            getListUserWithPaginate={getListUserWithPaginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         )}
       </div>
