@@ -26,7 +26,7 @@ const ManageUser = () => {
 
   useEffect(() => {
     getListUser();
-  }, [userList]);
+  }, []);
 
   const handleClickBtnUpdate = (user) => {
     setDataUser(user);
@@ -74,6 +74,7 @@ const ManageUser = () => {
             showModalViewUser={showModalViewUser}
             setShowModalViewUser={setShowModalViewUser}
             dataUser={dataUser}
+            getListUser={getListUser}
           />
         )}
         {showModalDeleteUser && (
@@ -81,6 +82,7 @@ const ManageUser = () => {
             showModalDeleteUser={showModalDeleteUser}
             setShowModalDeleteUser={setShowModalDeleteUser}
             dataUser={dataUser}
+            getListUser={getListUser}
           />
         )}
       </div>

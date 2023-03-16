@@ -8,7 +8,6 @@ const ModalViewUser = ({
   showModalViewUser,
   setShowModalViewUser,
   dataUser,
-  getListUser,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
