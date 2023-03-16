@@ -7,7 +7,11 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postCreateNewUser } from "../../../../services/apiService";
 
-const AddNewUserModal = ({ getListUser, getListUserWithPaginate }) => {
+const AddNewUserModal = ({
+  getListUser,
+  getListUserWithPaginate,
+  setCurrentPage,
+}) => {
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
@@ -58,6 +62,7 @@ const AddNewUserModal = ({ getListUser, getListUserWithPaginate }) => {
       toast.success(data.EM);
       handleClose();
       // await getListUser();
+      setCurrentPage(1);
       await getListUserWithPaginate(1);
     }
     if (data && data.EC !== 0) {

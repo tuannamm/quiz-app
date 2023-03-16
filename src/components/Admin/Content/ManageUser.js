@@ -86,6 +86,7 @@ const ManageUser = () => {
           <AddNewUserModal
             getListUser={getListUser}
             getListUserWithPaginate={getListUserWithPaginate}
+            setCurrentPage={setCurrentPage}
           />
         )}
         {showModalUpdateUser && (
