@@ -1,4 +1,9 @@
-const TableUsers = ({ userList, handleClickBtnUpdate, handleClickBtnView }) => {
+const TableUsers = ({
+  userList,
+  handleClickBtnUpdate,
+  handleClickBtnView,
+  handleClickBtnDelete,
+}) => {
   return (
     <table className="table table-hover table-bordered">
       <thead>
@@ -21,7 +26,12 @@ const TableUsers = ({ userList, handleClickBtnUpdate, handleClickBtnView }) => {
                 <td>{user.email}</td>
                 <td>{user.role}</td>
                 <td className="d-flex flex-row-reverse">
-                  <button className="btn btn-danger">DELETE</button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleClickBtnDelete(user)}
+                  >
+                    DELETE
+                  </button>
                   <button
                     className="btn btn-primary mx-3"
                     onClick={() => handleClickBtnUpdate(user)}

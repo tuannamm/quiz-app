@@ -11,7 +11,7 @@ import { putUpdateUser } from "../../../../services/apiService";
 const ModalUpdateUser = ({
   showModalUpdateUser,
   setShowModalUpdateUser,
-  dataUpdate,
+  dataUser,
   getListUser,
 }) => {
   const [email, setEmail] = useState("");
@@ -31,14 +31,14 @@ const ModalUpdateUser = ({
   };
 
   useEffect(() => {
-    if (!_.isEmpty(dataUpdate)) {
-      setEmail(dataUpdate.email);
-      setUsername(dataUpdate.username);
-      setRole(dataUpdate.role);
+    if (!_.isEmpty(dataUser)) {
+      setEmail(dataUser.email);
+      setUsername(dataUser.username);
+      setRole(dataUser.role);
       setImage("");
-      setPreviewImg(`data:image/jpeg;base64,${dataUpdate.image}`);
+      setPreviewImg(`data:image/jpeg;base64,${dataUser.image}`);
     }
-  }, [dataUpdate]);
+  }, [dataUser]);
 
   const handleUploadImage = (e) => {
     if (e.target && e.target.files && e.target.files[0]) {
@@ -50,12 +50,12 @@ const ModalUpdateUser = ({
   const handleSubmitUser = async () => {
     // validate
 
-    let data = await putUpdateUser(dataUpdate.id, username, role, image);
+    let data = await putUpdateUser(dataUser.id, username, role, image);
 
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
-      // await getListUser();
+      await getListUser();
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
