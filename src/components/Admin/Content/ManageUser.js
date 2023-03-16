@@ -7,11 +7,13 @@ import TableUsers from "./tableUsers";
 import AddNewUserModal from "./Modal/AddNewUserModal";
 import ModalUpdateUser from "./Modal/modalUpdateUser";
 import ModalViewUser from "./Modal/modalViewUser";
+import ModalDeleteUser from "./Modal/modalDeleteUser";
 
 const ManageUser = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
   const [showModalViewUser, setShowModalViewUser] = useState(false);
+  const [showModalDeleteUser, setShowModalDeleteUser] = useState(false);
   const [dataUpdate, setDataUpdate] = useState();
   const [userList, setUserList] = useState([]);
 
@@ -36,6 +38,11 @@ const ManageUser = () => {
     setShowModalViewUser(true);
   };
 
+  const handleClickBtnDelete = (user) => {
+    setDataUpdate(user);
+    setShowModalDeleteUser(true);
+  };
+
   return (
     <div className="manage-user-container">
       <div className="manage-title">Manage User</div>
@@ -49,6 +56,7 @@ const ManageUser = () => {
               userList={userList}
               handleClickBtnUpdate={handleClickBtnUpdate}
               handleClickBtnView={handleClickBtnView}
+              handleClickBtnDelete={handleClickBtnDelete}
             />
           }
         </div>
@@ -65,6 +73,13 @@ const ManageUser = () => {
           <ModalViewUser
             showModalViewUser={showModalViewUser}
             setShowModalViewUser={setShowModalViewUser}
+            dataUpdate={dataUpdate}
+          />
+        )}
+        {showModalDeleteUser && (
+          <ModalDeleteUser
+            showModalDeleteUser={showModalDeleteUser}
+            setShowModalDeleteUser={setShowModalDeleteUser}
             dataUpdate={dataUpdate}
           />
         )}
