@@ -82,7 +82,12 @@ const ManageUser = () => {
             />
           }
         </div>
-        {showModal && <AddNewUserModal getListUser={getListUser} />}
+        {showModal && (
+          <AddNewUserModal
+            getListUser={getListUser}
+            getListUserWithPaginate={getListUserWithPaginate}
+          />
+        )}
         {showModalUpdateUser && (
           <ModalUpdateUser
             showModalUpdateUser={showModalUpdateUser}
@@ -90,8 +95,8 @@ const ManageUser = () => {
             dataUser={dataUser}
             getListUser={getListUser}
             getListUserWithPaginate={getListUserWithPaginate}
-            currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
           />
         )}
         {showModalViewUser && (
@@ -110,7 +115,6 @@ const ManageUser = () => {
             dataUser={dataUser}
             getListUser={getListUser}
             getListUserWithPaginate={getListUserWithPaginate}
-            currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
         )}
