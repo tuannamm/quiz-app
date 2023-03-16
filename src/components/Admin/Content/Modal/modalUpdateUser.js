@@ -6,12 +6,13 @@ import "../ManageUser.scss";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { postCreateNewUser } from "../../../../services/apiService";
+import { putUpdateUser } from "../../../../services/apiService";
 
 const ModalUpdateUser = ({
   showModalUpdateUser,
   setShowModalUpdateUser,
   dataUpdate,
+  getListUser,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,25 +47,10 @@ const ModalUpdateUser = ({
     }
   };
 
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
-
   const handleSubmitUser = async () => {
     // validate
-    const isValidEmail = validateEmail();
-    if (isValidEmail) {
-      toast.error("Invalid email");
-    }
-    if (!password) {
-      toast.error("Invalid password");
-    }
 
-    let data = await postCreateNewUser(email, password, username, role, image);
+    let data = await putUpdateUser(dataUpdate.id, username, role, image);
 
     if (data && data.EC === 0) {
       toast.success(data.EM);
