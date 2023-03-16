@@ -1,4 +1,4 @@
-const TableUsers = ({ userList }) => {
+const TableUsers = ({ userList, handleClickBtnUpdate }) => {
   return (
     <table className="table table-hover table-bordered">
       <thead>
@@ -22,7 +22,12 @@ const TableUsers = ({ userList }) => {
                 <td>{user.role}</td>
                 <td className="d-flex flex-row-reverse">
                   <button className="btn btn-danger">DELETE</button>
-                  <button className="btn btn-primary mx-3">EDIT</button>
+                  <button
+                    className="btn btn-primary mx-3"
+                    onClick={() => handleClickBtnUpdate(user)}
+                  >
+                    EDIT
+                  </button>
                   <button className="btn btn-success">VIEW</button>
                 </td>
               </tr>
