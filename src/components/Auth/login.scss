@@ -3,9 +3,22 @@
   flex-direction: column;
   gap: 15px;
   .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     height: 45px;
     text-align: right;
-
+    padding: 5px 100px;
+    button {
+      border: none;
+      padding: 3px 15px;
+      border-radius: 5px;
+      margin-left: 15px;
+      background-color: #adadad;
+      &:hover {
+        background-color: #e2dfdf;
+      }
+    }
   }
   .title {
     font-size: 25px;
@@ -29,7 +42,14 @@
       border: none;
       border-radius: 5px;
       background-color: #adadad;
-      margin-top: 5px;
+      margin: 10px 0px;
+      &:hover {
+        background-color: #e2dfdf;
+      }
+    }
+
+    .back {
+      cursor: pointer;
     }
   }
 }

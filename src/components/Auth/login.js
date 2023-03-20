@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./login.scss";
 
 const Login = (props) => {
@@ -6,7 +7,10 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   return (
     <div className="login-container">
-      <div className="header">Don't have account yet?</div>
+      <div className="header">
+        <span>Don't have account yet?</span>
+        <button className="sign-up-button">Sign up</button>
+      </div>
       <div className="title col-4 mx-auto">Quiz App</div>
       <div className="welcome col-4 mx-auto">Hello, who's this?</div>
       <div className="content-form col-4 mx-auto">
@@ -31,6 +35,9 @@ const Login = (props) => {
         <span className="forgot-password">Forgot password?</span>
         <div>
           <button className="btn-submit">Login to Quiz App</button>
+        </div>
+        <div className="text-center">
+          <span className="back"> &#60; Go to Homepage</span>
         </div>
       </div>
     </div>
