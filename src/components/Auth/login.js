@@ -2,9 +2,17 @@ import { useState } from "react";
 
 import "./login.scss";
 
+import { useNavigate } from "react-router-dom";
+
 const Login = (props) => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const goBackHomepage = () => {
+    navigate("/");
+  };
   return (
     <div className="login-container">
       <div className="header">
@@ -37,7 +45,9 @@ const Login = (props) => {
           <button className="btn-submit">Login to Quiz App</button>
         </div>
         <div className="text-center">
-          <span className="back"> &#60; Go to Homepage</span>
+          <span className="back" onClick={() => goBackHomepage()}>
+            &#60; Go to Homepage
+          </span>
         </div>
       </div>
     </div>
