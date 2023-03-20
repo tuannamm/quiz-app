@@ -11,7 +11,6 @@ const ModalDeleteUser = ({
   dataUser,
   getListUser,
   getListUserWithPaginate,
-  currentPage,
   setCurrentPage,
 }) => {
   const handleClose = () => {
