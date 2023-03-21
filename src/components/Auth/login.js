@@ -20,7 +20,7 @@ const Login = (props) => {
       );
   };
 
-  const goBackHomepage = () => {
+  const goHomepage = () => {
     navigate("/");
   };
 
@@ -83,7 +83,7 @@ const Login = (props) => {
           </button>
         </div>
         <div className="text-center">
-          <span className="back" onClick={() => goBackHomepage()}>
+          <span className="back" onClick={() => goHomepage()}>
             &#60; Go to Homepage
           </span>
         </div>
