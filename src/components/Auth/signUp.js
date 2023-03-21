@@ -26,6 +26,10 @@ const SignUp = () => {
     navigate("/login");
   };
 
+  const goHomepage = () => {
+    navigate("/");
+  };
+
   const signUpUser = async () => {
     const isValidEmail = validateEmail();
     if (isValidEmail) {
@@ -97,6 +101,11 @@ const SignUp = () => {
           <button className="btn-submit" onClick={() => signUpUser()}>
             Sign Up
           </button>
+        </div>
+        <div className="text-center">
+          <span className="back" onClick={() => goHomepage()}>
+            &#60; Go to Homepage
+          </span>
         </div>
       </div>
     </div>
