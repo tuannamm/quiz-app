@@ -12,6 +12,14 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const goBackHomepage = () => {
     navigate("/");
   };
@@ -21,10 +29,19 @@ const Login = (props) => {
   };
 
   const logInUser = async () => {
+    const isValidEmail = validateEmail();
+    if (isValidEmail) {
+      toast.error("Invalid email");
+    }
+    if (!password) {
+      toast.error("Invalid password");
+    }
+
     let data = await postUser(email, password);
 
     if (data && data.EC === 0) {
       toast.success(data.EM);
+      navigate("/");
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
@@ -39,7 +56,7 @@ const Login = (props) => {
         </button>
       </div>
       <div className="title col-4 mx-auto">Quiz App</div>
-      <div className="welcome col-4 mx-auto">Hello, who's this?</div>
+      <div className="welcome col-4 mx-auto">Hello, who are you?</div>
       <div className="content-form col-4 mx-auto">
         <div className="form-group">
           <label>Email</label>

@@ -44,6 +44,11 @@ const postUser = (email, password) => {
   return instance.post("api/v1/login", { email, password });
 };
 
+// signup user
+const postNewUser = (email, password, username) => {
+  return instance.post("api/v1/register", { email, password, username });
+};
+
 export {
   postCreateNewUser,
   getAllUsers,
@@ -51,4 +56,5 @@ export {
   putUpdateUser,
   deleteUser,
   postUser,
+  postNewUser,
 };
