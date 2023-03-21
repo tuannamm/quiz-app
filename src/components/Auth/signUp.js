@@ -5,8 +5,9 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const goBackLogIn = () => {
-    navigate("/signup");
+    navigate("/login");
   };
+
   return (
     <div className="signup-container">
       <div className="header">
@@ -27,10 +28,11 @@ const SignUp = () => {
           <label>Username</label>
           <input type={"text"} className="form-control" />
         </div>
-        <span className="Already have account?" onCl></span>
+
         <div>
           <button className="btn-submit">Sign Up</button>
         </div>
+        <span onClick={() => goBackLogIn()}>Already have account?</span>
       </div>
     </div>
   );

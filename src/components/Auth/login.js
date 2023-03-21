@@ -16,6 +16,10 @@ const Login = (props) => {
     navigate("/");
   };
 
+  const goSignUp = () => {
+    navigate("/signup");
+  };
+
   const logInUser = async () => {
     let data = await postUser(email, password);
 
@@ -30,7 +34,9 @@ const Login = (props) => {
     <div className="login-container">
       <div className="header">
         <span>Don't have account yet?</span>
-        <button className="sign-up-button">Sign up</button>
+        <button className="sign-up-button" onClick={() => goSignUp()}>
+          Sign up
+        </button>
       </div>
       <div className="title col-4 mx-auto">Quiz App</div>
       <div className="welcome col-4 mx-auto">Hello, who's this?</div>
