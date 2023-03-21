@@ -89,6 +89,9 @@
   .content-form {
 
     input {
+ 
+     width: 100%;
+
      margin: 15px 0 15px 0;
     }
 
@@ -106,6 +109,15 @@
 
     .back {
       cursor: pointer;
+    }
+
+    .pass-group {
+      position: relative;
+      .icons-eye {
+         position: absolute;
+         right: 10px;
+         bottom: 10px;
+      }
     }
   }
 }
