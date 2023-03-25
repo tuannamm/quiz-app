@@ -2,12 +2,15 @@ import { useState } from "react";
 
 import "./login.scss";
 import { postUser } from "../../services/apiService";
+import { loginUser } from "../../redux/action/userAction";
 
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 const Login = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,6 +43,7 @@ const Login = (props) => {
     let data = await postUser(email, password);
 
     if (data && data.EC === 0) {
+      dispatch(loginUser(data));
       toast.success(data.EM);
       navigate("/");
     }
