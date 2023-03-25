@@ -18,6 +18,11 @@
       &:hover {
         background-color: #e2dfdf;
       }
+      &:disabled {
+        background-color: red;
+        color: #afafaf;
+        cursor: no-drop;
+      }
     }
   }
   .title {
@@ -50,6 +55,20 @@
 
     .back {
       cursor: pointer;
+    }
+
+    .loading-icon {
+      font-size: 14px;
+      animation: spin 1s infinite linear;
+    }
+
+    @keyframes spin {
+      from {
+        transform: scale(1) rotate(0deg);
+      }
+      to {
+        transform: scale(1) rotate(360deg);
+      }
     }
   }
 }

@@ -3,7 +3,9 @@ import ReactDOM from "react-dom/client";
 
 // import library
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import { Provider } from "react-redux";
+import "nprogress/nprogress.css";
 
 // import component
 import Layout from "./layout";
