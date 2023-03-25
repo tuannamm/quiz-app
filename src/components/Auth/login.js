@@ -7,6 +7,7 @@ import { loginUser } from "../../redux/action/userAction";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Login = (props) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   const validateEmail = (email) => {
     return String(email)
@@ -40,17 +42,22 @@ const Login = (props) => {
       toast.error("Invalid password");
     }
 
+    setLoading(true);
+
     let data = await postUser(email, password);
 
     if (data && data.EC === 0) {
       dispatch(loginUser(data));
       toast.success(data.EM);
-      navigate("/");
+      setLoading(false);
+      // navigate("/");
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);
+      setLoading(false);
     }
   };
+
   return (
     <div className="login-container">
       <div className="header">
@@ -82,8 +89,15 @@ const Login = (props) => {
         </div>
         <span className="forgot-password">Forgot password?</span>
         <div>
-          <button className="btn-submit" onClick={() => logInUser()}>
-            Login to Quiz App
+          <button
+            className="btn-submit"
+            disabled={isLoading}
+            onClick={() => logInUser()}
+          >
+            {isLoading === true && (
+              <AiOutlineLoading3Quarters className="loading-icon" />
+            )}
+            <span> Login to Quiz App</span>
           </button>
         </div>
         <div className="text-center">
