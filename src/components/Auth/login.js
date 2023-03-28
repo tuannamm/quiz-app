@@ -50,7 +50,7 @@ const Login = (props) => {
       dispatch(loginUser(data));
       toast.success(data.EM);
       setLoading(false);
-      // navigate("/");
+      navigate("/");
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);

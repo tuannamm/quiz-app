@@ -49,6 +49,11 @@ const postNewUser = (email, password, username) => {
   return instance.post("api/v1/register", { email, password, username });
 };
 
+// get quiz list of user
+const getQuizListUser = () => {
+  return instance.get("api/v1/quiz-by-participant");
+};
+
 export {
   postCreateNewUser,
   getAllUsers,
@@ -57,4 +62,5 @@ export {
   deleteUser,
   postUser,
   postNewUser,
+  getQuizListUser,
 };

@@ -7,6 +7,7 @@ import ManageUser from "./components/Admin/Content/ManageUser";
 import Dashboard from "./components/Admin/Content/Dashboard";
 import Login from "./components/Auth/login";
 import SignUp from "./components/Auth/signUp";
+import QuizList from "./components/User/quizList";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -19,7 +20,7 @@ const Layout = (props) => {
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path="/user" element={<User />} />
+            <Route path="/user" element={<QuizList />} />
           </Route>
           <Route path="/admin" element={<Admin />}>
             <Route index element={<Dashboard />} />
