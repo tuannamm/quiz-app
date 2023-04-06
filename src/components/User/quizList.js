@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./quiz.scss";
 
 import { getQuizListUser } from "../../services/apiService";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const QuizList = (props) => {
   const navigate = useNavigate();
