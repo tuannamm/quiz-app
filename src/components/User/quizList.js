@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import "./quiz.scss";
 
 import { getQuizListUser } from "../../services/apiService";
+import { useNavigate, useParams } from "react-router-dom";
 
 const QuizList = (props) => {
+  const navigate = useNavigate();
   const [quizList, setQuizList] = useState([]);
 
   useEffect(() => {
@@ -52,7 +54,12 @@ const QuizList = (props) => {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <button className="btn btn-primary">Start now</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate(`/quiz/1`)}
+            >
+              Start now
+            </button>
           </div>
         </div>
       )}

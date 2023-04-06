@@ -54,6 +54,11 @@ const getQuizListUser = () => {
   return instance.get("api/v1/quiz-by-participant");
 };
 
+// get question by quiz id
+const getQuestionByQuizId = (quizId) => {
+  return instance.get(`api/v1/questions-by-quiz?quizId=${quizId}`);
+};
+
 export {
   postCreateNewUser,
   getAllUsers,
@@ -63,4 +68,5 @@ export {
   postUser,
   postNewUser,
   getQuizListUser,
+  getQuestionByQuizId,
 };
