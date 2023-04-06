@@ -8,6 +8,7 @@ import Dashboard from "./components/Admin/Content/Dashboard";
 import Login from "./components/Auth/login";
 import SignUp from "./components/Auth/signUp";
 import QuizList from "./components/User/quizList";
+import NotFound from "./components/NotFound/notFound";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -28,6 +29,7 @@ const Layout = (props) => {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>
 
