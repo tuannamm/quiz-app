@@ -56,7 +56,9 @@ const QuizList = (props) => {
             </p>
             <button
               className="btn btn-primary"
-              onClick={() => navigate(`/quiz/1`)}
+              onClick={() =>
+                navigate(`/quiz/1`, { state: { quizTitle: "Test Quiz App" } })
+              }
             >
               Start now
             </button>
