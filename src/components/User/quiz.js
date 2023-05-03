@@ -227,6 +227,17 @@ const Quiz = (props) => {
           >
             Next
           </button>
+
+          <button
+            className="btn btn-warning"
+            onClick={() =>
+              setCurrentQuestion((prev) =>
+                prev === dataQuiz.length - 1 ? 0 : prev + 1
+              )
+            }
+          >
+            Finish
+          </button>
         </div>
       </div>
       <div className="right-content">count down</div>

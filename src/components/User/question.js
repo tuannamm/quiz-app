@@ -24,7 +24,7 @@ const Question = (props) => {
           return (
             <>
               <div className="answer" key={index}>
-                <div class="form-check">
+                <div class="answer-child">
                   <input
                     className="form-check-input"
                     type="checkbox"
