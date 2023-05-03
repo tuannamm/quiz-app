@@ -202,7 +202,11 @@ const Quiz = (props) => {
           <image />
         </div>
         <div className="question-content">
-          <Question dataQuiz={dataQuiz[currentQuestion]} />
+          <Question
+            dataQuiz={
+              dataQuiz && dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []
+            }
+          />
         </div>
         <div className="question-footer">
           <button

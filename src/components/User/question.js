@@ -10,7 +10,10 @@ const Question = (props) => {
   return (
     <>
       <div className="question-image">
-        <img src={`data:image/jpeg;base64,${dataQuiz.image}`} />
+        <img
+          src={`data:image/jpeg;base64,${dataQuiz.image}`}
+          alt={`${dataQuiz.questionDescription}`}
+        />
       </div>
       <div className="question">
         Question {dataQuiz?.questionId}: {dataQuiz?.questionDescription}
