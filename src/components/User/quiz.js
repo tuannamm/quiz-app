@@ -114,6 +114,7 @@ const Quiz = (props) => {
               questionDescription = item.description;
               image = item.image;
             }
+            item.answers.isSelected = false;
             answers.push(item.answers);
           });
 
@@ -191,6 +192,30 @@ const Quiz = (props) => {
     fetchQuestionByQuizId();
   }, [quizId]);
 
+  const handleCheckbox = (answerId, questionId) => {
+    let dataQuizClone = _.cloneDeep(dataQuiz);
+    let question = dataQuizClone.find(
+      (item) => +item.questionId === +questionId
+    );
+
+    if (question && question.answers) {
+      let dataQuizAfterCheck = question.answers.map((item) => {
+        if (+item.id === +answerId) {
+          item.isSelected = !item.isSelected;
+        }
+        return item;
+      });
+      question.answers = dataQuizAfterCheck;
+    }
+    let index = dataQuizClone.findIndex(
+      (item) => +item.questionId === +questionId
+    );
+    if (index > -1) {
+      dataQuizClone[index] = question;
+      setDataQuiz(dataQuizClone);
+    }
+  };
+
   return (
     <div className="detail-quiz-container">
       <div className="left-content">
@@ -203,6 +228,7 @@ const Quiz = (props) => {
         </div>
         <div className="question-content">
           <Question
+            handleCheckbox={handleCheckbox}
             dataQuiz={
               dataQuiz && dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []
             }
