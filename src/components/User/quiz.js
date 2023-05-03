@@ -1,14 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { getQuestionByQuizId } from "../../services/apiService";
 import _ from "lodash";
 import "./quiz.scss";
+import Question from "./question";
 
 const Quiz = (props) => {
   const params = useParams();
   const location = useLocation();
-
   const quizId = params.id;
+
+  const [dataQuiz, setDataQuiz] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const fetchQuestionByQuizId = async () => {
     let res = await getQuestionByQuizId(quizId);
@@ -106,7 +109,6 @@ const Quiz = (props) => {
           let answers = [];
           let questionDescription = null;
           let image = null;
-          console.log("value ", value);
           value.forEach((item, index) => {
             if (index === 0) {
               questionDescription = item.description;
@@ -118,7 +120,7 @@ const Quiz = (props) => {
           return { questionId: key, questionDescription, image, answers };
         })
         .value();
-      console.log("data", data);
+      setDataQuiz(data);
       /* data sau khi duoc group by
       [
         {
@@ -200,16 +202,27 @@ const Quiz = (props) => {
           <image />
         </div>
         <div className="question-content">
-          <div className="question">Question 1: Chọn đáp án đúng</div>
-          <div className="answer">
-            <div className="answer-a">A. 123</div>
-            <div className="answer-b">B. 456</div>
-            <div className="answer-c">C. 789</div>
-          </div>
+          <Question dataQuiz={dataQuiz[currentQuestion]} />
         </div>
         <div className="question-footer">
-          <button className="btn btn-secondary">Prev</button>
-          <button className="btn btn-primary">Next</button>
+          <button
+            className="btn btn-secondary"
+            onClick={() =>
+              setCurrentQuestion((prev) => (prev === 0 ? prev : prev - 1))
+            }
+          >
+            Prev
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={() =>
+              setCurrentQuestion((prev) =>
+                prev === dataQuiz.length - 1 ? 0 : prev + 1
+              )
+            }
+          >
+            Next
+          </button>
         </div>
       </div>
       <div className="right-content">count down</div>

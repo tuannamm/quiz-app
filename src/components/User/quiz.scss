@@ -1,6 +1,12 @@
 .quiz-list-container {
   display: flex;
   gap: 50px;
+  margin-top: 50px;
+  .card {
+    img {
+      height: 25vh;
+    }
+  }
 }
 
 .detail-quiz-container {
@@ -18,6 +24,17 @@
       .question {
         font-size: 20px;
         font-weight: 600;
+      }
+      .answer {
+       
+      }
+      .question-image {
+        width: 300;
+        height: 200px;
+        img {
+          width: 300;
+          height: 200px;
+        }
       }
     }
     .question-footer {
