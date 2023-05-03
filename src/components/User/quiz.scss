@@ -1,4 +1,51 @@
 .quiz-list-container {
   display: flex;
   gap: 50px;
+  margin-top: 50px;
+  .card {
+    img {
+      height: 25vh;
+    }
+  }
+}
+
+.detail-quiz-container {
+  display: flex;
+  gap: 50px;
+  padding: 50px;
+  .left-content {
+    width: 70%;
+    border: 1px solid red;
+    .title {
+      font-size: 40px;
+      font-weight: 600;
+    }
+    .question-content {
+      .question {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .answer {
+       
+      }
+      .question-image {
+        width: 300;
+        height: 200px;
+        img {
+          width: 300;
+          height: 200px;
+        }
+      }
+    }
+    .question-footer {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+  }
+
+  .right-content {
+    width: 30%;
+    border: 1px solid blue;
+  }
 }
